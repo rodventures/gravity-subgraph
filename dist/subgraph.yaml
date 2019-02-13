@@ -1,8 +1,8 @@
 specVersion: 0.0.1
 description: Gravatar for Ethereum
-repository: https://github.com/rodventures/gravity-subgraph
+repository: 'https://github.com/rodventures/gravity-subgraph'
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Gravity
@@ -18,8 +18,8 @@ dataSources:
         - Gravatar
       abis:
         - name: Gravity
-          file: ./abis/Gravity.abi
+          file: Gravity/abis/Gravity.abi
       eventHandlers:
-        - event: NewGravatar(uint256,address,string,string)
+        - event: 'NewGravatar(uint256,address,string,string)'
           handler: handleNewGravatar
-      file: ./src/mapping.ts
+      file: Gravity/Gravity.wasm

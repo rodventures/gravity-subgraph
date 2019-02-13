@@ -1,11 +1,10 @@
-import { Counter as Contract, Incremented } from './types/Counter/Counter'
-import { Counter } from './types/schema'
+import { NewGravatar } from './types/Gravity/Gravity'
+import { Gravatar } from './types/schema'
 
-export function handleIncremented(event: Incremented): void {
-  let counter = Counter.load('default-counter')
-  if (counter == null) {
-    counter = new Counter('default-counter')
-  }
-  counter.value = event.params.value
-  counter.save()
+export function handleNewGravatar(event: NewGravatar): void {
+  let gravatar = new Gravatar(event.params.id.toHex())
+  gravatar.owner = event.params.owner
+  gravatar.displayName = event.params.displayName
+  gravatar.imageUrl = event.params.imageUrl
+  gravatar.save()
 }
